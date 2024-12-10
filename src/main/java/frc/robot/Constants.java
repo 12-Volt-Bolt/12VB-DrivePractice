@@ -19,10 +19,13 @@ public final class Constants {
 
 
 // CAN Ports
-public static final int LEFT_FRONT_MOTOR_ID = 1;
-public static final int LEFT_REAR_MOTOR_ID = 2;
-public static final int RIGHT_FRONT_MOTOR_ID = 3;
-public static final int RIGHT_REAR_MOTOR_ID = 4;
+public static final int LEFT_FRONT_MOTOR_ID = 2;
+public static final int LEFT_REAR_MOTOR_ID = 3;
+public static final int RIGHT_FRONT_MOTOR_ID = 12;
+public static final int RIGHT_REAR_MOTOR_ID = 13;
 // USB Ports
 public static final int CONTROLLER_PORT = 0;
+
+public static final double ALIGN_KP = 0.02;  // Proportional constant for alignment
+public static final double FORWARD_KP = 0.1; // Proportional constant for moving forward
 }

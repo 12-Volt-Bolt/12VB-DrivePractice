@@ -18,9 +18,12 @@ public class ArcadeDriveCommand extends CommandBase {
     @Override
     public void execute() {
         // Get joystick inputs and drive the robot
-        double leftSpeed = -controller.getLeftY();
+/*         double leftSpeed = -controller.getLeftY();
         double rightSpeed = -controller.getRightY();
-        driveSubsystem.tankDrive(leftSpeed, rightSpeed);
+        driveSubsystem.tankDrive(leftSpeed, rightSpeed);  */
+        double speed = -controller.getLeftY();
+        double rotation = controller.getRightX();
+        driveSubsystem.arcadeDrive(speed, rotation);
     }
 
     @Override

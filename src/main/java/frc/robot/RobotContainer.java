@@ -2,12 +2,20 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.AlignToTargetCommand;
 import frc.robot.commands.ArcadeDriveCommand;
+import frc.robot.commands.DriveToAprilTag;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.Limelight;
 
 public class RobotContainer {
     private final DriveSubsystem driveSubsystem = new DriveSubsystem();
     private final XboxController controller = new XboxController(Constants.CONTROLLER_PORT);
+    private final Limelight limelightSubsystem = new Limelight();
+
+    private final DriveToAprilTag driveToAprilTag = new DriveToAprilTag(driveSubsystem, limelightSubsystem);
+
 
     public RobotContainer() {
         // Configure default commands
@@ -17,11 +25,15 @@ public class RobotContainer {
     // Optionally, define autonomous command here
     public Command getAutonomousCommand() {
         // Return an autonomous command if needed
+        // return driveToAprilTag;
+
         return null;
     }
 
 /** Used for defining button actions. */
 public void configureButtonBindings() {
+// Bind the A button to the AlignToTargetCommand
+new Trigger(controller::getAButton).whileTrue(new AlignToTargetCommand(driveSubsystem, limelightSubsystem));
 
 // controller.getXButton().onTrue(new InstantCommand(() -> swerve.zeroGyro()));
 // controller.getXButtonPressed().onTrue(new InstantCommand(() -> swerve.zeroGyro()));
