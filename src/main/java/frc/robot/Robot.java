@@ -15,6 +15,10 @@
  * Inversion: The right motors are inverted to ensure that forward on the joysticks drives the robot forward.
  */
 package frc.robot;
+// NavX on-line library: https://dev.studica.com/releases/2024/NavX.json
+// Spark: https://software-metadata.revrobotics.com/REVLib-2023.json
+// Talon: https://maven.ctr-electronics.com/release/com/ctre/phoenix/Phoenix5-frc2024-latest.json
+
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;

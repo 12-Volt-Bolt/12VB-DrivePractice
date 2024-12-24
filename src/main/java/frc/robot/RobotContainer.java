@@ -2,10 +2,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.AlignToTargetCommand;
 import frc.robot.commands.ArcadeDriveCommand;
 import frc.robot.commands.DriveToAprilTag;
+import frc.robot.commands.ToggleLEDCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Limelight;
 
@@ -20,6 +22,7 @@ public class RobotContainer {
     public RobotContainer() {
         // Configure default commands
         driveSubsystem.setDefaultCommand(new ArcadeDriveCommand(driveSubsystem, controller));
+        //limelightSubsystem.setLEDs(false);  // maybe
     }
 
     // Optionally, define autonomous command here
@@ -33,7 +36,10 @@ public class RobotContainer {
 /** Used for defining button actions. */
 public void configureButtonBindings() {
 // Bind the A button to the AlignToTargetCommand
-new Trigger(controller::getAButton).whileTrue(new AlignToTargetCommand(driveSubsystem, limelightSubsystem));
+//new Trigger(controller::getAButton).whileTrue(new AlignToTargetCommand(driveSubsystem, limelightSubsystem));
+//new Trigger(() -> controller.getAButton()).onTrue(new AlignToTargetCommand(driveSubsystem, limelightSubsystem));
+new Trigger(() -> controller.getAButton()).whileTrue(new DriveToAprilTag(driveSubsystem, limelightSubsystem));
+new Trigger(() -> controller.getLeftBumper()).onTrue(new ToggleLEDCommand(limelightSubsystem));
 
 // controller.getXButton().onTrue(new InstantCommand(() -> swerve.zeroGyro()));
 // controller.getXButtonPressed().onTrue(new InstantCommand(() -> swerve.zeroGyro()));

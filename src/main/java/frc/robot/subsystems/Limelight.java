@@ -107,11 +107,11 @@ public class Limelight extends SubsystemBase {
    * 
    */
 
-   public boolean hasTarget() {
+   public static boolean hasTarget() {
     return NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0) > 0;
 }
 
-public double getHorizontalOffset() {
+public static double getHorizontalOffset() {
     return NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
 }
 

@@ -16,6 +16,9 @@ public class ArcadeDriveCommand extends CommandBase {
     }
 
     @Override
+    public void initialize(){}
+
+    @Override
     public void execute() {
         // Get joystick inputs and drive the robot
 /*         double leftSpeed = -controller.getLeftY();
