@@ -58,5 +58,23 @@ public class DriveSubsystem extends SubsystemBase {
         } else {
             SmartDashboard.putString("Within Range", "Target is NOT in front of me");
         }
+
+        Double xvalue = Limelight.getHorizontalOffset();
+
+        if (xvalue >= 20 && xvalue <= -20) {
+            drive.arcadeDrive(0, 5);
+        }
+
+        SmartDashboard.putString("Test", "I'm running");  
+        if (Limelight.hasTarget()) {
+            SmartDashboard.putString("Sight Test", "tag " + xvalue);
+        } else {
+            SmartDashboard.putString("Sight Test", "Doesn't see a tag");
+        }
+        if (xvalue <= 20 && xvalue >= -20) {
+            SmartDashboard.putString("Within Range", "Target is in front of me");
+        } else {
+            SmartDashboard.putString("Within Range", "Target is NOT in front of me");
+        }
     }
 }
