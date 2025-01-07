@@ -32,7 +32,7 @@ public class DriveSubsystem extends SubsystemBase {
     } */
 
     public void arcadeDrive(double speed, double rotation) {
-        drive.arcadeDrive(speed, rotation);
+        drive.arcadeDrive(-speed, -rotation);
     }
 
     // Optional: Stop the motors
@@ -42,10 +42,21 @@ public class DriveSubsystem extends SubsystemBase {
 
     @Override
     public void periodic(){
+        Double LMposition = Limelight.getHorizontalOffset();
+        int id = Limelight.getTid();
 
-        Double xvalue = Limelight.getHorizontalOffset();
+        if (LMposition >= -20 && LMposition <= 20 && Limelight.hasTarget()) {
+            SmartDashboard.putString("Target", "I see the target. It's ID is " + id + ".");
+        } else {
+            drive.arcadeDrive(0, 5);
+            SmartDashboard.putString("Target", "I do not see the target.");
+        }
+
+
+
+        /* Double xvalue = Limelight.getHorizontalOffset();
         if (xvalue >= 20 && xvalue <= -20) {
-//            drive.arcadeDrive(0, 5);
+            drive.arcadeDrive(0, 5);
         }
         SmartDashboard.putString("Test", "I'm running");  
         if (Limelight.hasTarget()) {
@@ -57,7 +68,7 @@ public class DriveSubsystem extends SubsystemBase {
             SmartDashboard.putString("Within Range", "Target is in front of me");
         } else {
             SmartDashboard.putString("Within Range", "Target is NOT in front of me");
-        }
+        } */
 
     }
 }
