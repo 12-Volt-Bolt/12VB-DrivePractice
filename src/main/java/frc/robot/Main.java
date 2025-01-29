@@ -1,6 +1,3 @@
-// Author: UMN Robotics Ri3D
-// Last Updated: January 2023
-
 package frc.robot;
 
 import edu.wpi.first.wpilibj.RobotBase;

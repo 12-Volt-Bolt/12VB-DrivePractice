@@ -1,7 +1,4 @@
-  // Author: UMN Robotics Ri3D
-  // Last Updated: January 2025
-
-  package frc.robot;
+package frc.robot;
 
   import edu.wpi.first.wpilibj.TimedRobot;
   import edu.wpi.first.wpilibj.XboxController;
@@ -18,8 +15,7 @@
   import edu.wpi.first.wpilibj2.command.button.POVButton;
   import edu.wpi.first.wpilibj2.command.button.Trigger;
   import edu.wpi.first.wpilibj2.command.InstantCommand;
-  import frc.robot.commands.autonomous.example_basic_auto.Drive1MeterAuto;
-  import frc.robot.commands.autonomous.example_basic_auto.SquareAutonomous;
+  import frc.robot.commands.autonomous.auto_scripts.*;
 /*   import frc.robot.commands.elevator.CoralElevatorMoveCommand;
   import frc.robot.commands.elevator.CoralElevatorSetPositionArmCommand;
   import frc.robot.commands.elevator.CoralElevatorWheelMoveCommand;
@@ -71,7 +67,9 @@
       // Add our Autonomous Routines to the chooser //
       autonChooser.setDefaultOption("Do Nothing", new InstantCommand());
       autonChooser.addOption("Drive 1 Meter", new Drive1MeterAuto());
-      autonChooser.addOption("Square Autonomous", new SquareAutonomous());
+      autonChooser.addOption("Square", new SquareAutonomous());
+      autonChooser.addOption("Triangle", new TriangleAutonomous());
+      autonChooser.addOption("Strafe 1 Meter", new Strafe1MeterAutonomous());
       SmartDashboard.putData("Auto Mode", autonChooser);
 
       // Zero the gyroscope and reset the drive encoders
@@ -115,7 +113,7 @@
     /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
     @Override
     public void autonomousInit() {
-      System.out.println("AUTONOMOUS MODE STARTED");
+      System.out.println("BUNNY RUNNING FREE");
 
       m_autonomousCommand = autonChooser.getSelected();
       
@@ -142,7 +140,7 @@
 
     @Override
     public void teleopInit() {
-      System.out.println("TELEOP MODE STARTED");
+      System.out.println("BUNNY BEING CONTROLLED BY OWNER");
 
       // This makes sure that the autonomous stops running when
       // teleop starts running. If you want the autonomous to
@@ -230,7 +228,7 @@
     public void testInit() {
       // Cancels all running commands at the start of test mode.
       CommandScheduler.getInstance().cancelAll();
-      System.out.println("TEST MODE STARTED");
+      System.out.println("TEST BUNNY STARTED");
     }
 
     /** This function is called periodically during test mode. */

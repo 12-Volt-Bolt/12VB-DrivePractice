@@ -1,7 +1,4 @@
 
-// Author: UMN Robotics Ri3D
-// Last Updated: January 2025
-
 package frc.robot;
 
 import edu.wpi.first.math.util.Units;
@@ -16,10 +13,10 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
     // Physical Robot Constants //
-    public static final double WHEEL_DIAMETER = Units.inchesToMeters(6); // Convert from inches to meters
+    public static final double WHEEL_DIAMETER = Units.inchesToMeters(8); // Convert from inches to meters
     public static final double WHEEL_CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER; // Measured in meters
-	public static final double TRACK_WIDTH = Units.inchesToMeters(21); // Distance between centers of right and left wheels on robot (in meters)
-    public static final double WHEEL_BASE = Units.inchesToMeters(16.75); // Distance between centers of front and back wheels on robot (in meters)
+	public static final double TRACK_WIDTH = Units.inchesToMeters(20.5); // Distance between centers of right and left wheels on robot
+    public static final double WHEEL_BASE = Units.inchesToMeters(16.3); // Distance between centers of front and back wheels on robot
 
     // Controller Input Axes //
     public static final int CONTROLLER_USB_PORT_ID = 0; // USB port that the controller is plugged in to
@@ -126,17 +123,6 @@ public final class Constants {
     // REV PH Channels //
     // Example: public static final int EXTENSION_SOLENOID_ID = 0;
 
-    // Rev PDH Constants //
-    public static final int LEFT_FRONT_DRIVE_MOTOR_PDH_CHANNEL = 11; // TODO: Fix this number with the correct channel
-    public static final int RIGHT_FRONT_DRIVE_MOTOR_PDH_CHANNEL = 10; // TODO: Fix this number with the correct channel
-    public static final int LEFT_BACK_DRIVE_MOTOR_PDH_CHANNEL = 12; // TODO: Fix this number with the correct channel
-    public static final int RIGHT_BACK_DRIVE_MOTOR_PDH_CHANNEL = 13; // TODO: Fix this number with the correct channel
-    public static final int INTAKE_BAR_MOTOR_PDH_CHANNEL = 1; // TODO: Fix this number with the correct channel
-    public static final int INTAKE_DEPLOY_MOTOR_PDH_CHANNEL = 2; // TODO: Fix this number with the correct channel
-    public static final int ELEVATOR_STAGE_1_MOTOR_PDH_CHANNEL = 3; // TODO: Fix this number with the correct channel
-    public static final int ELEVATOR_STAGE_2_MOTOR_PDH_CHANNEL = 4; // TODO: Fix this number with the correct channel
-    public static final int ELEVATOR_ARM_MOTOR_PDH_CHANNEL = 5; // TODO: Fix this number with the correct channel
-    public static final int ELEVATOR_WHEEL_MOTOR_PDH_CHANNEL = 6; // TODO: Fix this number with the correct channel
 
     // Pneumatics Constants //
     public static final int COMPRESSOR_CAN_ID = 7;

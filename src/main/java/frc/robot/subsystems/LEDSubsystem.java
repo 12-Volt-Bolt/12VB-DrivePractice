@@ -1,6 +1,3 @@
-// Author: UMN Robotics Ri3D
-// Last Updated: January 2024
-
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
