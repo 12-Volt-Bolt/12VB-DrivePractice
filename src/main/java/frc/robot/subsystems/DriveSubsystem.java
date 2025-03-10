@@ -1,6 +1,3 @@
-// Author: UMN Robotics Ri3D
-// Last Updated: January 2025
-
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
@@ -142,6 +139,7 @@ public class DriveSubsystem extends SubsystemBase {
 		return kThetaControllerConstraints;
 	}
 
+
 	@Override
 	public void periodic() {
 		// Update the odometry in the periodic block
@@ -162,13 +160,10 @@ public class DriveSubsystem extends SubsystemBase {
 		robotDrive.driveCartesian(ySpeed, xSpeed, zRotation, currentAngle);
 	}
 
-	// Add left turn code
 	public void leftTurn(double triggerValue) {
-		double turnSpeed = -triggerValue * Constants.kMAX_TURN_SPEED;
-		driveCartesian(0, 0, turnSpeed);
-	}
-
-
+        double turnSpeed = triggerValue * Constants.kMAX_TURN_SPEED; // Removed negative sign
+        driveCartesian(0, 0, turnSpeed); // Z-axis rotation for turning
+    }
 
 	/** Get the encoder positions or speeds **************************************/
 	public double getLeftFrontPosition() { // Position is returned in units of revolutions
