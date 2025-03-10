@@ -300,5 +300,10 @@ import frc.robot.subsystems.ElevatorSubsystem;
  */
       // Test Controls //
       //new Trigger(() -> controller.getRawButton(Constants.A_BUTTON)).whileTrue(new DriveToTrackedTargetCommand(1)); // Track AprilTag
+      // Add left turn binding using left trigger
+      new Trigger(() -> controller.getRawAxis(Constants.LEFT_TRIGGER_AXIS) > 0.1)
+          .whileTrue(new RunCommand(() -> m_driveSubsystem.leftTurn(
+              controller.getRawAxis(Constants.LEFT_TRIGGER_AXIS)), 
+              m_driveSubsystem));
     }
   }
