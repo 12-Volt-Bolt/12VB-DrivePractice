@@ -18,6 +18,19 @@ public class ElevatorSubsystem extends SubsystemBase {
     private static final double MIN_HEIGHT_INCHES = Constants.ELEVATOR_MIN_HEIGHT;
     
     private double speed = 0.0;
+    
+    public double getMotorRotations() {
+        return motor.getEncoder().getPosition();
+    }
+    
+    public double getMotorVelocity() {
+        return motor.getEncoder().getVelocity();
+    }
+    
+    public void setSpeedManual(double speed) {
+        motor.set(speed);
+    }
+
 
     @Override
     public void periodic() {
