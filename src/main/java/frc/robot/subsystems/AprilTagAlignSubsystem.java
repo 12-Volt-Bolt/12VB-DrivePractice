@@ -26,41 +26,37 @@ public class AprilTagAlignSubsystem extends SubsystemBase {
     public void periodic() {
         if (controller.getYButton()) {
             // dw these comments are jokes
-            if (LimelightHelpers.getTV("limelight_front")) {
-                double[] targetPose = LimelightHelpers.getTargetPose_RobotSpace("limelight_front");
+            double[] targetPose = LimelightHelpers.getTargetPose_RobotSpace("limelight_front");
                 
-                // uh so this i think is the x and y position of the april tag relative to the robot but idrk
-                double currentX = targetPose[0];
-                double currentY = targetPose[1];
-                double tx = LimelightHelpers.getTX("limelight_front");
+            // uh so this i think is the x and y position of the april tag relative to the robot but idrk
+            double currentX = targetPose[0];
+            double currentY = targetPose[1];
+            double tx = LimelightHelpers.getTX("limelight_front");
 
-                // yeah i learned this in fish class
-                double xError = currentX - DESIRED_DISTANCE_METERS;
-                double correctionX = xError * kP_X;
-                correctionX = Math.copySign(Math.min(Math.abs(correctionX), MAX_FORWARD_POWER), correctionX);
+            // yeah i learned this in fish class
+            double xError = currentX - DESIRED_DISTANCE_METERS;
+            double correctionX = xError * kP_X;
+            correctionX = Math.copySign(Math.min(Math.abs(correctionX), MAX_FORWARD_POWER), correctionX);
 
-                // x axis?
-                double correctionY = currentY * kP_Y;
-                correctionY = Math.copySign(Math.min(Math.abs(correctionY), MAX_STRAFE_POWER), correctionY);
+            // x axis?
+            double correctionY = currentY * kP_Y;
+            correctionY = Math.copySign(Math.min(Math.abs(correctionY), MAX_STRAFE_POWER), correctionY);
 
-                // oh nvm this has to be the x axis, no way its not
-                double correctionZ = tx * kP;
-                correctionZ = Math.copySign(Math.min(Math.abs(correctionZ), MAX_POWER), correctionZ);
+            // oh nvm this has to be the x axis, no way its not
+            double correctionZ = tx * kP;
+            correctionZ = Math.copySign(Math.min(Math.abs(correctionZ), MAX_POWER), correctionZ);
 
-                // hmm maybe isaiah would know
-                if (currentX < DESIRED_DISTANCE_METERS) {
-                    correctionX = Math.min(correctionX, 0);
-                }
-
-                SmartDashboard.putNumber("AprilTag X Error", xError);
-                SmartDashboard.putNumber("AprilTag Y Position", currentY);
-                SmartDashboard.putNumber("Alignment Correction X", correctionX);
-                SmartDashboard.putNumber("Alignment Correction Y", correctionY);
-
-                drivetrain.driveCartesian(correctionX, correctionY, -correctionZ);
-            } else {
-                stop();
+            // hmm maybe isaiah would know
+            if (currentX < DESIRED_DISTANCE_METERS) {
+                correctionX = Math.min(correctionX, 0);
             }
+
+            SmartDashboard.putNumber("AprilTag X Error", xError);
+            SmartDashboard.putNumber("AprilTag Y Position", currentY);
+            SmartDashboard.putNumber("Alignment Correction X", correctionX);
+            SmartDashboard.putNumber("Alignment Correction Y", correctionY);
+
+            drivetrain.driveCartesian(correctionX, correctionY, -correctionZ);
         } else {
             stop();
         }
