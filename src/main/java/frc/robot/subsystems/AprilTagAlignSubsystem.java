@@ -57,7 +57,7 @@ public class AprilTagAlignSubsystem extends SubsystemBase {
                 SmartDashboard.putNumber("Alignment Correction X", correctionX);
                 SmartDashboard.putNumber("Alignment Correction Y", correctionY);
 
-                drivetrain.driveCartesian(correctionY, correctionX, -correctionZ);
+                drivetrain.driveCartesian(correctionX, correctionY, -correctionZ);
             } else {
                 stop();
             }
